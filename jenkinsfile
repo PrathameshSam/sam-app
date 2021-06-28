@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters{
-        choice(name: goal, choices=['install', 'package', 'test'], descrtipton: "Select a Goal")
+        choice(name: goal, choices=['install', 'package', 'test'], description: "Select a Goal")
     }
     stages{
         stage("Build"){
