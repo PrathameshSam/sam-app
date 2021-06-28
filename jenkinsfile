@@ -4,18 +4,14 @@ pipeline{
         choice(name: goal, choices=['install', 'package', 'test'], descrtipton: "Select a Goal")
     }
     stages{
-    if(params.goal == "install"){
-            stage("Build"){
-                sh 'mvn clean install'
+        stage("Build"){
+        if(params.goal == "install"){
+                    sh 'mvn clean install'
+            } else if(params.goal == "package"){
+                    sh 'mvn package'
+            } else if(params.goal=="test"){
+                    sh 'mvn package'
             }
-        } else if(params.goal == "package"){
-        stage("Package"){
-                sh 'mvn package'
-            }
-        } else if(params.goal=="test"){
-            stage("Test"){
-                sh 'mvn package'
-            }
-        }   
+        }
     }
 }
