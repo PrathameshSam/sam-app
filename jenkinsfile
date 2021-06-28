@@ -2,7 +2,7 @@ pipeline{
     agent any
     parameters{
         choice(name: 'goal', choices: ['install', 'package', 'test'], description: "Select a Goal")
-        #choice(name: 'crawler_env', choices: ['install', 'package', 'test'], description:  'Select an Environment')
+        // #choice(name: 'crawler_env', choices: ['install', 'package', 'test'], description:  'Select an Environment')
     }
     stages{
         stage("Build"){
