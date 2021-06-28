@@ -5,12 +5,14 @@ pipeline{
     }
     stages{
         stage("Build"){
-        if(params.goal == "install"){
-                    sh 'mvn clean install'
-            } else if(params.goal == "package"){
-                    sh 'mvn package'
-            } else if(params.goal=="test"){
-                    sh 'mvn package'
+            steps{
+            if(params.goal == "install"){
+                        sh 'mvn clean install'
+                } else if(params.goal == "package"){
+                        sh 'mvn package'
+                } else if(params.goal=="test"){
+                        sh 'mvn package'
+                }
             }
         }
     }
