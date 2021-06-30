@@ -1,20 +1,16 @@
+library identifier: 'samsharedlib@master', retriever: modernSCM(
+  [$class: 'GitSCMSource',
+   remote: 'https://github.com/PrathameshSam/prathamesh-sam-shared-library.git'])
 pipeline{
     agent any
     parameters{
         choice(name: 'goal', choices: ['install', 'package', 'test'], description: "Select a Goal")
         // #choice(name: 'crawler_env', choices: ['install', 'package', 'test'], description:  'Select an Environment')
     }
-    stages{
-        stage("Build"){
-            steps{
-            if(params.goal == "install"){
-                        sh 'mvn clean install'
-                } else if(params.goal == "package"){
-                        sh 'mvn package'
-                } else if(params.goal=="test"){
-                        sh 'mvn package'
-                }
-            }
-        }
-    }
+    stage('Git Checkout') {
+    githubScm(
+        branch: "master",
+        url: "https://github.com/PrathameshSam/sam-app.git"
+    )
+}
 }
