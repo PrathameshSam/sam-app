@@ -9,10 +9,12 @@ pipeline{
     }
     stages{
     stage('Git Checkout') {
+    step{
     githubScm(
         branch: "master",
         url: "https://github.com/PrathameshSam/sam-app.git"
     )
+    }
 }
 }
 }
