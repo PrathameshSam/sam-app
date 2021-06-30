@@ -10,7 +10,7 @@ pipeline{
     stages{
     stage('Git Checkout') {
     steps{
-    echo "env.BRANCH_NAME"
+    echo "${env.BRANCH_NAME}"
     githubScm(
         branch: "master",
         url: "https://github.com/PrathameshSam/sam-app.git"
