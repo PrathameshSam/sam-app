@@ -7,10 +7,12 @@ pipeline{
         choice(name: 'goal', choices: ['install', 'package', 'test'], description: "Select a Goal")
         // #choice(name: 'crawler_env', choices: ['install', 'package', 'test'], description:  'Select an Environment')
     }
+    stages{
     stage('Git Checkout') {
     githubScm(
         branch: "master",
         url: "https://github.com/PrathameshSam/sam-app.git"
     )
+}
 }
 }
